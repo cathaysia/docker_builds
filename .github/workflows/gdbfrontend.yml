@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      - 
+        name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: dragontao/gdbfrontend
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          dockerfile: gdbfrontend.yml
