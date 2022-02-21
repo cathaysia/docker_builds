@@ -1,4 +1,4 @@
-name: gdbfrontend
+name: qt5
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - 'master'
   workflow_dispatch:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '0 0 12 ? * 2'
 
 jobs:
   docker:
@@ -19,7 +19,7 @@ jobs:
         name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: dragontao/gdbfrontend
+          name: dragontao/qt5
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          dockerfile: gdbfrontend.dockerfile
+          dockerfile: qt5.dockerfile
