@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/ubuntu
+{
+	"name": "notes",
+	"build": {
+		"dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "USERNAME":"${localEnv:USER}"
+        }
+	},
+    // "postAttachCommand": "sphinx-autobuild /workspaces/notes/source/ /workspaces/notes/_build/html/ --no-initial",
+    "containerEnv": {
+        "DISPLAY":"${localEnv:DISPLAY}"
+    },
+    "mounts": [
+        // "source=vscode-server,target=/home/${localEnv:USER}/.vscode-server,type=volume",
+        // "source=vscode-config,target=/home/${localEnv:USER}/.config,type=volume",
+        // "source=vscode-local,target=/home/${localEnv:USER}/.local,type=volume",
+        "source=vscode-extension,target=${localEnv:HOME}/.vscode-server/extensions,type=volume",
+        "source=${localEnv:HOME}/.cache,target=${localEnv:HOME}/.cache,type=bind",
+        "source=${localEnv:HOME}/.ssh,target=${localEnv:HOME}/.ssh,type=bind",
+        "source=${localEnv:HOME}/.ssh,target=${localEnv:HOME}/.gnupg,type=bind",
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"
+    ],
+    "forwardPorts": [8000,8000],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {},
+
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"lextudio.restructuredtext",
+		"kukushi.pasteurl",
+		"mushan.vscode-paste-image",
+		"ms-azuretools.vscode-docker",
+		"editorconfig.editorconfig",
+		"baurine.vscode-pangu",
+		"trond-snekvik.simple-rst"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "${localEnv:USER}",
+    "updateRemoteUserUID": true
+}

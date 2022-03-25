@@ -1,0 +1,12 @@
+Sphinx
+recommonmark
+sphinxcontrib.plantuml
+sphinxcontrib-mermaid
+sphinxcontrib-needs
+sphinxcontrib-mscgen
+docxbuilder
+# sphinx_materialdesign_theme
+sphinx-rtd-theme
+pre-commit
+rstcheck
+# furo
