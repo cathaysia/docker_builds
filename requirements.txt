@@ -9,4 +9,6 @@ docxbuilder
 sphinx-rtd-theme
 pre-commit
 rstcheck
+sphinx-immaterial[keys]
+sphinx-immaterial
 # furo
